@@ -7,7 +7,7 @@ const links = [
   { path: "/insights", label: "Insights" },
 ]
 
-function Sidebar({ weather, loading }) {
+function Sidebar({ weather }) {
   const temperature = weather ? Math.round(weather.temperature) : 27
   const condition = weather?.condition || "Sunny"
 
@@ -17,7 +17,7 @@ function Sidebar({ weather, loading }) {
 
       <section className="sidebarWeather">
         <span className="bigWeatherIcon" aria-hidden="true" />
-        <p>{loading ? "Loading..." : "New York, USA"}</p>
+        <p>New York, USA</p>
         <strong>{temperature}&deg;</strong>
         <span>{condition}</span>
       </section>

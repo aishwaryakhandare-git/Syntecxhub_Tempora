@@ -12,7 +12,7 @@ const hourly = [
   { label: "16:00", value: 64, temp: "29" },
 ]
 
-function Overview({ weather, loading }) {
+function Overview({ weather }) {
   const temperature = weather ? Math.round(weather.temperature) : 27
 
   return (
@@ -25,7 +25,7 @@ function Overview({ weather, loading }) {
       <section className="heroCard">
         <div>
           <p>Current weather</p>
-          <h2>{loading ? "--" : temperature}&deg;</h2>
+          <h2>{temperature}&deg;</h2>
           <span>{weather?.condition || "Sunny"} in New York</span>
         </div>
         <span className="heroSun" aria-hidden="true" />
@@ -51,7 +51,7 @@ function Overview({ weather, loading }) {
       <section className="cardGrid">
         <WeatherCard title="Humidity" value={`${weather?.humidity || 82}%`} label="normal" fill={82} />
         <WeatherCard title="Wind" value={`${Math.round(weather?.wind || 8)} km/h`} label="light breeze" fill={35} />
-        <WeatherCard title="Feels like" value={`${temperature + 3}&deg;`} label="warm" fill={64} />
+        <WeatherCard title="Feels like" value={`${temperature + 3}°`} label="warm" fill={64} />
       </section>
     </section>
   )
