@@ -14,6 +14,7 @@ const hourly = [
 
 function Overview({ weather }) {
   const temperature = weather ? Math.round(weather.temperature) : 27
+  const location = weather?.location || "Mumbai, India"
 
   return (
     <section className="dashboardPage">
@@ -26,7 +27,7 @@ function Overview({ weather }) {
         <div>
           <p>Current weather</p>
           <h2>{temperature}&deg;</h2>
-          <span>{weather?.condition || "Sunny"} in New York</span>
+          <span>{weather?.condition || "Sunny"} in {location}</span>
         </div>
         <span className="heroSun" aria-hidden="true" />
       </section>

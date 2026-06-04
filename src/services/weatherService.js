@@ -1,5 +1,8 @@
-const apiUrl =
-  "https://api.open-meteo.com/v1/forecast?latitude=40.71&longitude=-74.01&current=temperature_2m,relative_humidity_2m,wind_speed_10m,pressure_msl,uv_index,weather_code"
+const defaultPlace = {
+  latitude: 19.07,
+  longitude: 72.88,
+  label: "Mumbai, India",
+}
 
 const weatherCodes = {
   0: "Clear sky",
@@ -12,13 +15,39 @@ const weatherCodes = {
   80: "Rain showers",
 }
 
-export async function getWeather() {
+function buildWeatherUrl(place) {
+  return `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,pressure_msl,uv_index,weather_code`
+}
+
+export function getBrowserPlace() {
+  return new Promise((resolve) => {
+    if (!navigator.geolocation) {
+      resolve(defaultPlace)
+      return
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        resolve({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          label: "Current location",
+        })
+      },
+      () => resolve(defaultPlace),
+      { timeout: 8000 }
+    )
+  })
+}
+
+export async function getWeather(place = defaultPlace) {
   try {
-    const response = await fetch(apiUrl)
+    const response = await fetch(buildWeatherUrl(place))
     const data = await response.json()
     const current = data.current
 
     return {
+      location: place.label,
       temperature: current.temperature_2m,
       humidity: current.relative_humidity_2m,
       wind: current.wind_speed_10m,
@@ -28,6 +57,7 @@ export async function getWeather() {
     }
   } catch {
     return {
+      location: defaultPlace.label,
       temperature: 27,
       humidity: 82,
       wind: 8,

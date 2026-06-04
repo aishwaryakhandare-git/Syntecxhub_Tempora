@@ -5,7 +5,7 @@ import Overview from "./pages/Overview"
 import Forecast from "./pages/Forecast"
 import Atmosphere from "./pages/Atmosphere"
 import Insights from "./pages/Insights"
-import { getWeather } from "./services/weatherService"
+import { getBrowserPlace, getWeather } from "./services/weatherService"
 import "./styles/overview.css"
 
 function App() {
@@ -13,7 +13,8 @@ function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    getWeather()
+    getBrowserPlace()
+      .then((place) => getWeather(place))
       .then((data) => setWeather(data))
       .finally(() => setLoading(false))
   }, [])

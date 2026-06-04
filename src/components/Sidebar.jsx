@@ -10,6 +10,7 @@ const links = [
 function Sidebar({ weather }) {
   const temperature = weather ? Math.round(weather.temperature) : 27
   const condition = weather?.condition || "Sunny"
+  const location = weather?.location || "Mumbai, India"
 
   return (
     <aside className="sidebar">
@@ -17,7 +18,7 @@ function Sidebar({ weather }) {
 
       <section className="sidebarWeather">
         <span className="bigWeatherIcon" aria-hidden="true" />
-        <p>New York, USA</p>
+        <p>{location}</p>
         <strong>{temperature}&deg;</strong>
         <span>{condition}</span>
       </section>
