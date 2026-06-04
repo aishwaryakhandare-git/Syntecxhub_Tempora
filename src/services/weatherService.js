@@ -16,7 +16,7 @@ const weatherCodes = {
 }
 
 function buildWeatherUrl(place) {
-  return `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,pressure_msl,uv_index,weather_code`
+  return `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}&timezone=auto&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,pressure_msl,uv_index,is_day,precipitation,rain,weather_code`
 }
 
 export function getBrowserPlace() {
@@ -48,21 +48,33 @@ export async function getWeather(place = defaultPlace) {
 
     return {
       location: place.label,
+      source: "Open-Meteo",
+      updatedAt: current.time,
       temperature: current.temperature_2m,
+      feelsLike: current.apparent_temperature,
       humidity: current.relative_humidity_2m,
       wind: current.wind_speed_10m,
       pressure: current.pressure_msl,
       uv: current.uv_index || 4,
+      isDay: current.is_day === 1,
+      precipitation: current.precipitation || 0,
+      rain: current.rain || 0,
       condition: weatherCodes[current.weather_code] || "Fresh weather",
     }
   } catch {
     return {
       location: defaultPlace.label,
+      source: "Fallback data",
+      updatedAt: "",
       temperature: 27,
+      feelsLike: 30,
       humidity: 82,
       wind: 8,
       pressure: 1014,
       uv: 4,
+      isDay: false,
+      precipitation: 0,
+      rain: 0,
       condition: "Sunny",
     }
   }

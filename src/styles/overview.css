@@ -204,6 +204,13 @@
   font-size: 13px;
 }
 
+.heroCard small {
+  display: block;
+  margin-top: 6px;
+  color: #8493a7;
+  font-size: 12px;
+}
+
 .heroCard h2 {
   margin: 2px 0;
   color: var(--text);

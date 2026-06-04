@@ -14,7 +14,9 @@ const hourly = [
 
 function Overview({ weather }) {
   const temperature = weather ? Math.round(weather.temperature) : 27
+  const feelsLike = weather ? Math.round(weather.feelsLike) : 30
   const location = weather?.location || "Mumbai, India"
+  const source = weather?.source || "Open-Meteo"
 
   return (
     <section className="dashboardPage">
@@ -28,6 +30,7 @@ function Overview({ weather }) {
           <p>Current weather</p>
           <h2>{temperature}&deg;</h2>
           <span>{weather?.condition || "Sunny"} in {location}</span>
+          <small>Source: {source}</small>
         </div>
         <span className="heroSun" aria-hidden="true" />
       </section>
@@ -52,7 +55,7 @@ function Overview({ weather }) {
       <section className="cardGrid">
         <WeatherCard title="Humidity" value={`${weather?.humidity || 82}%`} label="normal" fill={82} />
         <WeatherCard title="Wind" value={`${Math.round(weather?.wind || 8)} km/h`} label="light breeze" fill={35} />
-        <WeatherCard title="Feels like" value={`${temperature + 3}°`} label="warm" fill={64} />
+        <WeatherCard title="Feels like" value={`${feelsLike}\u00b0`} label="actual feel" fill={64} />
       </section>
     </section>
   )
