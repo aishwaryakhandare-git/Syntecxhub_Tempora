@@ -12,6 +12,11 @@ const hourly = [
   { label: "16:00", value: 64, temp: "29" },
 ]
 
+function getGreeting() {
+  const savedName = localStorage.getItem("temporaUserName")
+  return savedName ? `Welcome back ${savedName}!` : "Welcome back"
+}
+
 function Overview({ weather }) {
   const temperature = weather ? Math.round(weather.temperature) : 27
   const feelsLike = weather ? Math.round(weather.feelsLike) : 30
@@ -21,7 +26,7 @@ function Overview({ weather }) {
   return (
     <section className="dashboardPage">
       <PageHeader
-        title="Welcome back Isabella!"
+        title={getGreeting()}
         subtitle="Check out today's weather information"
       />
 

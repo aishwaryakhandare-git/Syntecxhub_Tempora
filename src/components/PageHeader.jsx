@@ -6,6 +6,7 @@ function PageHeader({ title, subtitle }) {
         <p>{subtitle}</p>
       </div>
       <div className="headerActions">
+        <span className="statusPill">Live forecast</span>
         <button className="menuButton" aria-label="More options">
           <span />
           <span />

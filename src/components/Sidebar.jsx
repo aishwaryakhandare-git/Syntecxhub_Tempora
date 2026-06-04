@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom"
 
 const links = [
-  { path: "/", label: "Overview" },
-  { path: "/forecast", label: "Forecast" },
-  { path: "/atmosphere", label: "Atmosphere" },
-  { path: "/insights", label: "Insights" },
+  { path: "/", label: "Overview", code: "O" },
+  { path: "/forecast", label: "Forecast", code: "F" },
+  { path: "/atmosphere", label: "Atmosphere", code: "A" },
+  { path: "/insights", label: "Insights", code: "I" },
 ]
 
 function Sidebar({ weather }) {
@@ -14,10 +14,16 @@ function Sidebar({ weather }) {
 
   return (
     <aside className="sidebar">
-      <div className="logo">TEMPORA</div>
+      <div className="logo">
+        <span className="logoMark" aria-hidden="true" />
+        TEMPORA
+      </div>
 
       <section className="sidebarWeather">
-        <span className="bigWeatherIcon" aria-hidden="true" />
+        <div className="weatherTopline">
+          <span className="bigWeatherIcon" aria-hidden="true" />
+          <span>Live</span>
+        </div>
         <p>{location}</p>
         <strong>{temperature}&deg;</strong>
         <span>{condition}</span>
@@ -26,10 +32,15 @@ function Sidebar({ weather }) {
       <nav className="navLinks" aria-label="Main navigation">
         {links.map((link) => (
           <NavLink to={link.path} key={link.label}>
+            <span className="navIcon">{link.code}</span>
             {link.label}
           </NavLink>
         ))}
       </nav>
+
+      <div className="sidebarFooter">
+        <span>Powered by Open-Meteo</span>
+      </div>
     </aside>
   )
 }
