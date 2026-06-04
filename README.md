@@ -1,6 +1,6 @@
 # 🌦 TEMPORA
 
-TEMPORA is a weather dashboard UI built while learning React and frontend development.
+TEMPORA is a weather dashboard UI built to apply my learnt React concepts .
 
 This project focuses on practicing component-based architecture, page structuring, dashboard layouts, responsive design, and preparing for real API integration.
 
@@ -151,4 +151,4 @@ Future additions:
 
 ---
 
-Made while learning React and frontend development ✨
+Made for applying my learnt React concepts ✨
