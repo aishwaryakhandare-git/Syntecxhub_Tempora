@@ -1,16 +1,154 @@
-# React + Vite
+# 🌦 TEMPORA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TEMPORA is a weather dashboard UI built while learning React and frontend development.
 
-Currently, two official plugins are available:
+This project focuses on practicing component-based architecture, page structuring, dashboard layouts, responsive design, and preparing for real API integration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The objective was to understand how weather applications are designed and organized rather than building a production-ready application.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# 🛠 Tech Stack
 
-## Expanding the ESLint configuration
+## Frontend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* React
+* Vite
+* CSS
+* React Hooks (`useEffect` planned for API integration)
+
+---
+
+## Backend (Planned)
+
+* Weather API
+* REST API integration
+* JSON data handling
+
+---
+
+# 📁 Project Structure
+
+```plaintext
+src
+
+pages/
+│
+├── Overview.jsx
+├── Forecast.jsx
+├── Atmosphere.jsx
+└── Insights.jsx
+
+
+components/
+│
+├── Sidebar.jsx
+├── SearchBar.jsx
+├── WeatherCard.jsx
+├── DetailCard.jsx
+├── Loader.jsx
+└── Error.jsx
+
+
+styles/
+│
+├── overview.css
+├── sidebar.css
+└── global.css
+
+
+services/
+│
+└── weatherApi.js
+
+
+App.jsx
+main.jsx
+```
+
+---
+
+# 📄 Pages
+
+## Overview
+
+Main dashboard screen.
+
+Displays:
+
+* Current weather
+* Temperature
+* City information
+* Hourly weather preview
+* Quick weather summary
+
+---
+
+## Forecast
+
+Forecast-focused page.
+
+Displays:
+
+* Upcoming weather
+* Daily forecast
+* Temperature changes
+* Weather trends
+
+---
+
+## Atmosphere
+
+Weather condition analysis page.
+
+Displays:
+
+* Humidity
+* Wind
+* UV index
+* Pressure
+* Visibility
+* Additional atmospheric details
+
+---
+
+## Insights
+
+Weather interpretation page.
+
+Displays:
+
+* Activity suggestions
+* Weather recommendations
+* Outdoor suitability
+* General weather observations
+
+---
+
+# 🎯 Learning Goals
+
+This project was created to practice:
+
+* React fundamentals
+* Page organization
+* Reusable components
+* Responsive layouts
+* UI structuring
+* API-ready frontend architecture
+
+---
+
+## Status
+
+Frontend UI Development (In Progress)
+
+Future additions:
+
+* Weather API integration
+* Dynamic weather data
+* Search functionality
+* Improved responsiveness
+
+---
+
+Made while learning React and frontend development ✨
